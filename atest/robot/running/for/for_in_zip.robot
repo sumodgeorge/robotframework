@@ -71,15 +71,15 @@ List variable with iterables can be empty
     Check Log Message          ${tc.body[2].msgs[0]}    Executed!
 
 Not iterable value
-    Check test and failed loop    ${TEST NAME}    IN ZIP
+    Check test and failed loop    ${TEST NAME}    IN ZIP    iterations=1
 
 Strings are not considered iterables
-    Check test and failed loop    ${TEST NAME}    IN ZIP
+    Check test and failed loop    ${TEST NAME}    IN ZIP    iterations=1
 
 Too few variables
-    Check test and failed loop    ${TEST NAME} 1    IN ZIP    0
-    Check test and failed loop    ${TEST NAME} 2    IN ZIP    1
+    Check test and failed loop    ${TEST NAME} 1    IN ZIP    0    iterations=1
+    Check test and failed loop    ${TEST NAME} 2    IN ZIP    1    iterations=1
 
 Too many variables
-    Check test and failed loop    ${TEST NAME} 1    IN ZIP    0
-    Check test and failed loop    ${TEST NAME} 2    IN ZIP    1
+    Check test and failed loop    ${TEST NAME} 1    IN ZIP    0    iterations=1
+    Check test and failed loop    ${TEST NAME} 2    IN ZIP    1    iterations=1

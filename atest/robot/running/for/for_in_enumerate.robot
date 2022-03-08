@@ -34,11 +34,11 @@ Escape start
 
 Invalid start
     ${loop} =    Check test and get loop    ${TEST NAME}
-    Should be IN ENUMERATE loop    ${loop}    0    status=FAIL
+    Should be IN ENUMERATE loop    ${loop}    1    status=FAIL
 
 Invalid variable in start
     ${loop} =    Check test and get loop    ${TEST NAME}
-    Should be IN ENUMERATE loop    ${loop}    0    status=FAIL
+    Should be IN ENUMERATE loop    ${loop}    1    status=FAIL
 
 Index and two items
     ${loop} =    Check test and get loop    ${TEST NAME}    1
@@ -60,10 +60,10 @@ One variable only
     Should be FOR iteration        ${loop.body[1]}    \${item}=(1, 'b')
 
 Wrong number of variables
-    Check test and failed loop    ${TEST NAME}    IN ENUMERATE
+    Check test and failed loop    ${TEST NAME}    IN ENUMERATE    iterations=1
 
 No values
     Check test and failed loop    ${TEST NAME}    IN ENUMERATE
 
 No values with start
-    Check test and failed loop    ${TEST NAME}    IN ENUMERATE
+    Check test and failed loop    ${TEST NAME}    IN ENUMERATE    iterations=1

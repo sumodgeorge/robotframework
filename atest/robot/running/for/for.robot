@@ -201,8 +201,8 @@ Multiple loop variables
     Should be FOR iteration       ${loop.body[1]}    \${a}=1    \${b}=2    \${c}=3    \${d}=4    \${e}=5
 
 Wrong number of loop variables
-    Check test and failed loop    ${TEST NAME} 1
-    Check test and failed loop    ${TEST NAME} 2
+    Check test and failed loop    ${TEST NAME} 1    iterations=1
+    Check test and failed loop    ${TEST NAME} 2    iterations=1
 
 Cut long iteration variable values
     ${tc} =         Check test case    ${TEST NAME}

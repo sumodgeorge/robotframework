@@ -93,18 +93,27 @@ class ForInRunner:
         result = ForResult(data.variables, data.flavor, data.values)
         with StatusReporter(data, result, self._context, self._run) as status:
             run_at_least_once = False
+            value_resolution_error = None
             if self._run:
                 if data.error:
                     raise DataError(data.error)
-                run_at_least_once = self._run_loop(data, result)
+                try:
+                    values = self._get_values_for_rounds(data)
+                except Exception as err:
+                    value_resolution_error = err
+                else:
+                    run_at_least_once = self._run_loop(data, values, result)
+
             if not run_at_least_once:
                 status.pass_status = result.NOT_RUN
                 self._run_one_round(data, result, run=False)
+            if value_resolution_error:
+                raise value_resolution_error
 
-    def _run_loop(self, data, result):
+    def _run_loop(self, data, values_for_rounds, result):
         errors = []
         executed = False
-        for values in self._get_values_for_rounds(data):
+        for values in values_for_rounds:
             executed = True
             try:
                 self._run_one_round(data, result, values)

@@ -18,7 +18,7 @@ FOR loop with two variables
     Should be FOR iteration    ${loop.body[2]}    \${key}=c    \${value}=3
 
 FOR loop with more than two variables is invalid
-    Check test and failed loop    ${TESTNAME}
+    Check test and failed loop    ${TESTNAME}    iterations=1
 
 FOR IN ENUMERATE loop with one variable
     ${loop} =    Check test and get loop    ${TESTNAME}
@@ -46,13 +46,13 @@ FOR IN ENUMERATE loop with start
     Should be IN ENUMERATE loop    ${loop}           3
 
 FOR IN ENUMERATE loop with more than three variables is invalid
-    Check test and failed loop    ${TESTNAME}    IN ENUMERATE
+    Check test and failed loop    ${TESTNAME}    IN ENUMERATE    iterations=1
 
 FOR IN RANGE loop doesn't support dict iteration
-    Check test and failed loop    ${TESTNAME}    IN RANGE
+    Check test and failed loop    ${TESTNAME}    IN RANGE    iterations=1
 
 FOR IN ZIP loop doesn't support dict iteration
-    Check test and failed loop    ${TESTNAME}    IN ZIP
+    Check test and failed loop    ${TESTNAME}    IN ZIP    iterations=1
 
 Multiple dict variables
     Check Test Case    ${TESTNAME}
@@ -96,9 +96,9 @@ Non-existing variable
     Check Test Case    ${TESTNAME} 2
 
 Dict variables and invalid values
-    Check test and failed loop    ${TESTNAME} 1
-    Check test and failed loop    ${TESTNAME} 2
-    Check test and failed loop    ${TESTNAME} 3
+    Check test and failed loop    ${TESTNAME} 1    iterations=1
+    Check test and failed loop    ${TESTNAME} 2    iterations=1
+    Check test and failed loop    ${TESTNAME} 3    iterations=1
 
 Equal sign in variable doesn't initiate dict iteration
     ${loop} =    Check test and get loop    ${TESTNAME}

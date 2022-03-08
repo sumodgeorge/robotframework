@@ -83,17 +83,17 @@ Multiple variables
     Should be FOR iteration    ${loop.body[3]}    \${i}=8     \${j}=9    \${k}=10
 
 Too many arguments
-    Check test and failed loop    ${TEST NAME}    IN RANGE
+    Check test and failed loop    ${TEST NAME}    IN RANGE    iterations=1
 
 No arguments
     Check test and failed loop    ${TEST NAME}    IN RANGE
 
 Non-number arguments
-    Check test and failed loop    ${TEST NAME} 1   IN RANGE
-    Check test and failed loop    ${TEST NAME} 2   IN RANGE
+    Check test and failed loop    ${TEST NAME} 1   IN RANGE    iterations=1
+    Check test and failed loop    ${TEST NAME} 2   IN RANGE    iterations=1
 
 Wrong number of variables
-    Check test and failed loop    ${TEST NAME}    IN RANGE
+    Check test and failed loop    ${TEST NAME}    IN RANGE    iterations=1
 
 Non-existing variables in arguments
-    Check test and failed loop    ${TEST NAME}    IN RANGE
+    Check test and failed loop    ${TEST NAME}    IN RANGE    iterations=1
