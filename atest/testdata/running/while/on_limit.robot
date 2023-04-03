@@ -2,9 +2,44 @@
 ${variable}    ${1}
 ${limit}       11
 ${number}      ${0.2}
+${pass}        Pass
 ${errorMsg}    Error Message
 
 *** Test Cases ***
+On limit pass without limit defined
+    WHILE    True    on_limit=PaSS
+        No Operation
+    END
+
+On limit pass with time limit defined
+    WHILE    True    limit=0.1s    on_limit=${pass}
+        No Operation
+        Sleep    0.05
+    END
+
+On limit pass with iteration limit defined
+    WHILE    True    limit=5    on_limit=pass
+        No Operation
+    END
+
+On limit fail
+    [Documentation]    FAIL WHILE loop was aborted because it did not finish within the limit of 5 iterations. Use the 'limit' argument to increase or remove the limit if needed.
+    WHILE    True    limit=5    on_limit=FaIl
+        No Operation
+    END
+
+On limit pass with failures in loop
+    [Documentation]    FAIL Oh no!
+    WHILE    True    limit=5    on_limit=pass
+        Fail   Oh no!
+    END
+
+Invalid on_limit
+    [Documentation]    FAIL Invalid WHILE loop on_limit: must be one of 'pass', 'fail', got 'inValid'.
+    WHILE    True    limit=5    on_limit=inValid
+        Fail   Oh no!
+    END
+
 On limit message without limit
     [Documentation]     FAIL Error
     WHILE    $variable < 2    on_limit_message=Error

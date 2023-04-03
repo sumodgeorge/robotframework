@@ -1027,7 +1027,7 @@ class WhileHeader(Statement):
     type = Token.WHILE
 
     @classmethod
-    def from_params(cls, condition, limit=None, on_limit_message=None,
+    def from_params(cls, condition, limit=None, on_limit=None, on_limit_message=None,
                     indent=FOUR_SPACES, separator=FOUR_SPACES, eol=EOL):
         tokens = [Token(Token.SEPARATOR, indent),
                   Token(cls.type),
@@ -1050,6 +1050,10 @@ class WhileHeader(Statement):
     @property
     def limit(self):
         return self.get_option('limit')
+
+    @property
+    def on_limit(self):
+        return self.get_option('on_limit')
 
     @property
     def on_limit_message(self):
