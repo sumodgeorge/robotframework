@@ -412,8 +412,8 @@ Example
                 Token(Token.WHILE, 'WHILE', 3, 4),
                 Token(Token.ARGUMENT, 'True', 3, 13),
                 Token(Token.OPTION, 'limit=10s', 3, 21),
-                Token(Token.OPTION, 'on_limit_message=Error message',
-                      3, 34)
+                Token(Token.OPTION, 'on_limit=pass', 3, 34),
+                Token(Token.OPTION, 'on_limit_message=Error message', 3, 51)
             ]),
             body=[
                 KeywordCall([Token(Token.KEYWORD, 'Log', 4, 8),

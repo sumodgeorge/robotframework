@@ -651,9 +651,16 @@ test will fail if the limit is exceeded.
 .. sourcecode:: robotframework
 
     *** Test Cases ***
-    Continue when limit is reached
+    Continue when iteration limit is reached
         WHILE    True    limit=5    on_limit=pass
             Log    Loop will be executed five times
+        END
+        Log    This will be executed normally.
+
+    Continue when time limit is reached
+        WHILE    True    limit=10s    on_limit=pass
+            Log    Loop will be executed for 10 seconds.
+            Sleep   0.5s
         END
         Log    This will be executed normally.
 

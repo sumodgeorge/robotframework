@@ -10,7 +10,7 @@ On limit pass with time limit defined
     Check Test Case    ${TESTNAME}
 
 On limit pass with iteration limit defined
-    Check Test Case    ${TESTNAME}
+    Check WHILE loop    PASS    5
 
 On limit message without limit
     Check Test Case    ${TESTNAME}
@@ -21,7 +21,16 @@ On limit fail
 On limit pass with failures in loop
     Check Test Case    ${TESTNAME}
 
+On limit pass with continuable failure
+    Check Test Case    ${TESTNAME}
+
+On limit fail with continuable failure
+    Check Test Case    ${TESTNAME}
+
 Invalid on_limit
+    Check Test Case    ${TESTNAME}
+
+On limit with invalid variable
     Check Test Case    ${TESTNAME}
 
 Wrong WHILE argument
@@ -43,6 +52,9 @@ Nested while on limit message
     Check Test Case    ${TESTNAME}
 
 On limit message before limit
+    Check Test Case    ${TESTNAME}
+
+On limit messge with invalid variable
     Check Test Case    ${TESTNAME}
 
 Wrong WHILE arguments

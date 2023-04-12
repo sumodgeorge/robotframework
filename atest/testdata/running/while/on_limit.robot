@@ -34,9 +34,32 @@ On limit pass with failures in loop
         Fail   Oh no!
     END
 
+On limit pass with continuable failure
+    [Documentation]    FAIL Third failure, this time a hard one.
+    WHILE    limit=2    on_limit=pass
+        Run Keyword And Continue On Failure    Fail    Continuable failure!
+    END
+    Fail    Third failure, this time a hard one.
+
+On limit fail with continuable failure
+    [Documentation]    FAIL Several failures occurred:\n\n
+    ...   1) Continuable failure!\n\n
+    ...   2) Continuable failure!\n\n
+    ...   3) WHILE loop was aborted because it did not finish within the limit of 2 iterations. Use the 'limit' argument to increase or remove the limit if needed.
+    WHILE    limit=2    on_limit=fail
+        Run Keyword And Continue On Failure    Fail    Continuable failure!
+    END
+    Fail    Should not be executed!
+
 Invalid on_limit
-    [Documentation]    FAIL Invalid WHILE loop on_limit: must be one of 'pass', 'fail', got 'inValid'.
+    [Documentation]    FAIL Invalid WHILE loop 'on_limit' value 'inValid': Value must be 'PASS' or 'FAIL'.
     WHILE    True    limit=5    on_limit=inValid
+        Fail   Oh no!
+    END
+
+On limit with invalid variable
+    [Documentation]    FAIL Invalid WHILE loop 'on_limit' value '${does not exist}': Variable '${does not exist}' not found.
+    WHILE    True    limit=5    on_limit=${does not exist}
         Fail   Oh no!
     END
 
@@ -87,6 +110,12 @@ Nested while on limit message
 On limit message before limit
     [Documentation]     FAIL Error
     WHILE    $variable < 2    on_limit_message=Error    limit=5
+        Log     ${variable}
+    END
+
+On limit messge with invalid variable
+    [Documentation]     FAIL Invalid WHILE loop 'on_limit_message': 'Variable '${nonExisting}' not found.
+    WHILE    $variable < 2    on_limit_message=${nonExisting}    limit=5
         Log     ${variable}
     END
 
