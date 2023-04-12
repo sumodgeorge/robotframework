@@ -6,11 +6,6 @@ ${pass}        Pass
 ${errorMsg}    Error Message
 
 *** Test Cases ***
-On limit pass without limit defined
-    WHILE    True    on_limit=PaSS
-        No Operation
-    END
-
 On limit pass with time limit defined
     WHILE    True    limit=0.1s    on_limit=${pass}
         No Operation
@@ -55,6 +50,12 @@ Invalid on_limit
     [Documentation]    FAIL Invalid WHILE loop 'on_limit' value 'inValid': Value must be 'PASS' or 'FAIL'.
     WHILE    True    limit=5    on_limit=inValid
         Fail   Oh no!
+    END
+
+On limit without limit defined
+    [Documentation]    FAIL WHILE on_limit option cannot be used without limit.
+    WHILE    True    on_limit=PaSS
+        No Operation
     END
 
 On limit with invalid variable

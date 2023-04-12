@@ -3,9 +3,6 @@ Suite Setup       Run Tests    ${EMPTY}    running/while/on_limit.robot
 Resource          while.resource
 
 *** Test Cases ***
-On limit pass without limit defined
-    Check Test Case    ${TESTNAME}
-
 On limit pass with time limit defined
     Check Test Case    ${TESTNAME}
 
@@ -28,6 +25,9 @@ On limit fail with continuable failure
     Check Test Case    ${TESTNAME}
 
 Invalid on_limit
+    Check Test Case    ${TESTNAME}
+
+On limit without limit defined
     Check Test Case    ${TESTNAME}
 
 On limit with invalid variable

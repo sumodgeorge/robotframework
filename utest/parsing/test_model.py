@@ -403,7 +403,7 @@ Example
         data = '''
 *** Test Cases ***
 Example
-    WHILE    True    limit=10s    on_limit_message=Error message
+    WHILE    True    limit=10s    on_limit=pass    on_limit_message=Error message
         Log    ${x}
     END
 '''

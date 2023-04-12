@@ -1063,6 +1063,8 @@ class WhileHeader(Statement):
         values = self.get_values(Token.ARGUMENT)
         if len(values) > 1:
             self.errors += (f'WHILE cannot have more than one condition, got {seq2str(values)}.',)
+        if self.on_limit and not self.limit:
+            self.errors += ('WHILE on_limit option cannot be used without limit.',)
 
 
 @Statement.register
